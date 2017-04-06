@@ -1,0 +1,9 @@
+*.pdf
+paper.aux
+*.bib
+paper.blg
+*.gz
+paper.log
+*.bbl
+paper.run.xml
+*.bcf

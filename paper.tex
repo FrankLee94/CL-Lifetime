@@ -1,0 +1,903 @@
+
+%% bare_jrnl.tex
+%% V1.4b
+%% 2015/08/26
+%% by Michael Shell
+%% see http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.8b or later) with an IEEE
+%% journal paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/pkg/ieeetran
+%% and
+%% http://www.ieee.org/
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE! 
+%% User assumes all risk.
+%% In no event shall the IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%*************************************************************************
+
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. The IEEE's font choices and paper sizes can   ***
+% *** trigger bugs that do not appear when using other class files.       ***                          ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+
+\documentclass[letter]{IEEEtran}
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[journal]{../sty/IEEEtran}
+
+
+
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/pkg/ifpdf
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+
+
+
+% *** CITATION PACKAGES ***
+%
+\usepackage{cite}
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of the IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off
+% such as if a citation ever needs to be enclosed in parenthesis.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 5.0 (2009-03-20) and later if using hyperref.sty.
+% The latest version can be obtained at:
+% http://www.ctan.org/pkg/cite
+% The documentation is contained in the cite.sty file itself.
+
+
+\usepackage{textcomp}
+\usepackage{algorithm}
+\usepackage{subfigure}
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+   \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  % \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation
+% can be obtained at: 
+% http://www.ctan.org/pkg/graphicx
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found at:
+% http://www.ctan.org/pkg/epslatex
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). The IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+
+
+
+
+% *** MATH PACKAGES ***
+%
+\usepackage{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics.
+%
+% Note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/amsmath
+
+
+
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as the IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/pkg/algorithms
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/pkg/algorithmicx
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/array
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\ifCLASSOPTIONcompsoc
+%  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+%\else
+%  \usepackage[caption=false,font=footnotesize]{subfig}
+%\fi
+% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
+% for subfigure.sty, the latter of which is no longer maintained and is
+% incompatible with some LaTeX packages including fixltx2e. However,
+% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
+% which will override IEEEtran.cls' handling of captions and this will result
+% in non-IEEE style figure/table captions. To prevent this problem, be sure
+% and invoke subfig.sty's "caption=false" package option (available since
+% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
+% handling of captions.
+% Note that the Computer Society format requires a larger sans serif font
+% than the serif footnote size font used in traditional IEEE formatting
+% and thus the need to invoke different subfig.sty package options depending
+% on whether compsoc mode has been enabled.
+%
+% The latest version and documentation of subfig.sty can be obtained at:
+% http://www.ctan.org/pkg/subfig
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure.
+% Be aware that LaTeX2e kernels dated 2015 and later have fixltx2e.sty's
+% corrections already built into the system in which case a warning will
+% be issued if an attempt is made to load fixltx2e.sty as it is no longer
+% needed.
+% The latest version and documentation can be found at:
+% http://www.ctan.org/pkg/fixltx2e
+
+
+\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/stfloats
+% Do not use the stfloats baselinefloat ability as the IEEE does not allow
+% \baselineskip to stretch. Authors submitting work to the IEEE should note
+% that the IEEE rarely uses double column equations and that authors should try
+% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
+% packages (also by Sigitas Tolusis) as the IEEE does not format its papers in
+% such ways.
+% Do not attempt to use stfloats with fixltx2e as they are incompatible.
+% Instead, use Morten Hogholm'a dblfloatfix which combines the features
+% of both fixltx2e and stfloats:
+%
+% \usepackage{dblfloatfix}
+% The latest version can be found at:
+% http://www.ctan.org/pkg/dblfloatfix
+
+
+
+
+%\ifCLASSOPTIONcaptionsoff
+%  \usepackage[nomarkers]{endfloat}
+% \let\MYoriglatexcaption\caption
+% \renewcommand{\caption}[2][\relax]{\MYoriglatexcaption[#2]{#2}}
+%\fi
+% endfloat.sty was written by James Darrell McCauley, Jeff Goldberg and 
+% Axel Sommerfeldt. This package may be useful when used in conjunction with 
+% IEEEtran.cls'  captionsoff option. Some IEEE journals/societies require that
+% submissions have lists of figures/tables at the end of the paper and that
+% figures/tables without any captions are placed on a page by themselves at
+% the end of the document. If needed, the draftcls IEEEtran class option or
+% \CLASSINPUTbaselinestretch interface can be used to increase the line
+% spacing as well. Be sure and use the nomarkers option of endfloat to
+% prevent endfloat from "marking" where the figures would have been placed
+% in the text. The two hack lines of code above are a slight modification of
+% that suggested by in the endfloat docs (section 8.4.1) to ensure that
+% the full captions always appear in the list of figures/tables - even if
+% the user used the short optional argument of \caption[]{}.
+% IEEE papers do not typically make use of \caption[]'s optional argument,
+% so this should not be an issue. A similar trick can be used to disable
+% captions of packages such as subfig.sty that lack options to turn off
+% the subcaptions:
+% For subfig.sty:
+% \let\MYorigsubfloat\subfloat
+% \renewcommand{\subfloat}[2][\relax]{\MYorigsubfloat[]{#2}}
+% However, the above trick will not work if both optional arguments of
+% the \subfloat command are used. Furthermore, there needs to be a
+% description of each subfigure *somewhere* and endfloat does not add
+% subfigure captions to its list of figures. Thus, the best approach is to
+% avoid the use of subfigure captions (many IEEE journals avoid them anyway)
+% and instead reference/explain all the subfigures within the main caption.
+% The latest version of endfloat.sty and its documentation can obtained at:
+% http://www.ctan.org/pkg/endfloat
+%
+% The IEEEtran \ifCLASSOPTIONcaptionsoff conditional can also be used
+% later in the document, say, to conditionally put the References on a 
+% page by themselves.
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/url
+% Basically, \url{my_url_here}.
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+\begin{document}
+%
+% paper title
+% Titles are generally capitalized except for words such as a, an, and, as,
+% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
+% not capitalized unless they are the first or last word of the title.
+% Linebreaks \\ can be used within to get better formatting as desired.
+% Do not put math or special symbols in the title.
+\title{\Large{Balancing Energy Efficiency and Device Lifetime in TWDM-PON \\Under Traffic Fluctuations}}
+%
+%
+% author names and IEEE memberships
+% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
+% a structure at a ~ so this keeps an author's name from being broken across
+% two lines.
+% use \thanks{} to gain access to the first footnote area
+% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
+% was not built to handle multiple paragraphs
+%
+
+\author{Author 1, Author 2, Author 3, Author 4, and Author 5% <-this % stops a space
+%\thanks{Manuscript received April 19, 2016; revised August 26, 2016; accepted August 26, 2016.}
+%\thanks{M. Shell was with the Department
+%of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta,
+%GA, 30332 USA e-mail: (see http://www.michaelshell.org/contact.html).}% <-this % stops a space
+\thanks{Author 1, Author 2, Author 3, Author 4, and Author 5 are with XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.}% <-this % stops a space
+\thanks{Manuscript received XX XX, 20XX; revised XX XX, 20XX.}}
+
+% note the % following the last \IEEEmembership and also \thanks - 
+% these prevent an unwanted space from occurring between the last author name
+% and the end of the author line. i.e., if you had this:
+% 
+% \author{....lastname \thanks{...} \thanks{...} }
+%                     ^------------^------------^----Do not want these spaces!
+%
+% a space would be appended to the last name and could cause every name on that
+% line to be shifted left slightly. This is one of those "LaTeX things". For
+% instance, "\textbf{A} \textbf{B}" will typeset as "A B" not "AB". To get
+% "AB" then you have to do: "\textbf{A}\textbf{B}"
+% \thanks is no different in this regard, so shield the last } of each \thanks
+% that ends a line with a % and do not let a space in before the next \thanks.
+% Spaces after \IEEEmembership other than the last one are OK (and needed) as
+% you are supposed to have spaces between the names. For what it is worth,
+% this is a minor point as most people would not even notice if the said evil
+% space somehow managed to creep in.
+
+
+
+% The paper headers
+\markboth{IEEE Communications Letters,~Vol.~XX, No.~XX, XX~20XX}%
+{Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for IEEE Journals}
+% The only time the second header will appear is for the odd numbered pages
+% after the title page when using the twoside option.
+% 
+% *** Note that you probably will NOT want to include the author's ***
+% *** name in the headers of peer review papers.                   ***
+% You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
+% you desire.
+
+
+
+
+% If you want to put a publisher's ID mark on the page you can do it like
+% this:
+%\IEEEpubid{0000--0000/00\$00.00~\copyright~2015 IEEE}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark.
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+
+% make the title area
+\maketitle
+% As a general rule, do not put math, special symbols or citations
+% in the abstract or keywords.
+
+\begin{abstract}
+Energy-efficient Time- and Wavelength- Division Multiplexed Passive Optical Network (TWDM-PON) has been intensely investigated. However, conventional energy-saving schemes aimed at maximizing energy efficiency may bring about repeated power-state transitions between sleep mode and active mode, which result in periodic device-temperature cycling and frequent wavelength reassignment. Specifically, periodic temperature cycling will decrease device lifetime, and frequent wavelength reassignment may cause massive traffic migrations, which will greatly deteriorate network Quality of Service (QoS). These side effects become non-trival when traffic fluctuates sharply in future networks. In this letter, we propose a Wavelength-Postponed-Switching-off (WPS) strategy to tackle these problems by postponing the power-off of redundant wavelengths. Illustrative results show that, compared with conventional Maximum-Energy-Saving (MES) algorithms, the proposed strategy can provide balanced performance of both energy efficiency and device lifetime, while decreasing the service interruption caused by traffic migrations when turning on or off the equipment.
+\end{abstract}
+
+% Note that keywords are not normally used for peerreview papers.
+\begin{IEEEkeywords}
+Device lifetime, traffic migration, energy efficiency, TWDM-PON.
+\end{IEEEkeywords}
+
+
+
+
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+\vspace{-4.0mm}
+
+\section{Introduction}
+% The very first letter is a 2 line initial drop letter followed
+% by the rest of the first word in caps.
+% 
+% form to use if the first word consists of a single letter:
+% \IEEEPARstart{A}{demo} file is ....
+% 
+% form to use if you need the single drop letter followed by
+% normal text (unknown if ever used by the IEEE):
+% \IEEEPARstart{A}{}demo file is ....
+% 
+% Some journals put the first two words in caps:
+% \IEEEPARstart{T}{his demo} file is ....
+% 
+% Here we have the typical use of a "T" for an initial drop letter
+% and "HIS" in caps to complete the first word.
+\IEEEPARstart{P}{assive} Optical Network (PON) is widely implemented in optical access networks for its passive features, cost efficiency and scalability. To meet the rapid bandwidth increase driven by real-time video streaming, Time- and Wavelength- Division Multiplex PON (TWDM-PON) has been proposed and regarded as a promising solution for optical access networks in the near future \cite{6289432}.
+
+Many energy-saving algorithms have been proposed in previous studies \cite{6802896,6320604,7249119}. However, these methods, which only focus on energy efficiency, may bring about many side effects. Two main drawbacks, lifetime degeneration and traffic migration, should be highlighted here. On one hand, when a heating device, such as transmitters equipped in the line card, is turning on and off repeatedly, thermal fatigue may occur in the materials, thus leading to a significant lifetime degeneration \cite{kressel2006semiconductor}. The experiment in \cite{schulz2012thermal} points out that the temperature swing turns out to be the dominant factor in device lifetime deterioration. On the other hand, traffic migration occurs along with wavelength reconfiguration. If the migration transpires, incoming packets have to be buffered or dropped until the reconfiguration is completed, which causes delay or loss of packets and degrades the Quality of Service (QoS). With the popularization of multimedia streaming and the rise of virtual reality, huge bandwidth is required in access networks. As reported by a video-on-demand provider UUSee, a single user's behavior will influence the bandwidth requirement notably \cite{6195785}. Meanwhile, emerging traffic patterns, like tidal traffic \cite{7444562}, will make this problem even worse.  As a consequence, severely-fluctuated traffic drives wavelength reconfigurations to be more frequent than ever before. Therefore, conventional energy-saving-oriented algorithms should be revisited carefully to cope with these new challenges.
+
+In this paper, a Wavelength-Postponed-Switching-off (WPS) strategy, realized by postponing the power-off of redundant wavelengths, is first introduced to handle frequent power-state transitions and massive traffic migrations simultaneously, when rapid traffic fluctuation transpires in optical access networks. We develop a hybrid C++/Python simulation platform to evaluate the performance of the strategy. Numerical results show that our strategy can provide balanced performance of both energy efficiency and device lifetime, while decreasing the service interruption caused by traffic migrations when turning on or off the equipment.
+
+
+%\hfill mds
+ 
+%\hfill August 26, 2015
+
+%\subsection{Subsection Heading Here}
+%Subsection text here.
+
+% needed in second column of first page if using \IEEEpubid
+%\IEEEpubidadjcol
+
+%\subsubsection{Subsubsection Heading Here}
+%Subsubsection text here.
+
+
+% An example of a floating figure using the graphicx package.
+% Note that \label must occur AFTER (or within) \caption.
+% For figures, \caption should occur after the \includegraphics.
+% Note that IEEEtran v1.7 and later has special internal code that
+% is designed to preserve the operation of \label within \caption
+% even when the captionsoff option is in effect. However, because
+% of issues like this, it may be the safest practice to put all your
+% \label just after \caption rather than within \caption{}.
+%
+% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
+% option should be used if it is desired that the figures are to be
+% displayed while in draft mode.
+%
+%\begin{figure}[!t]
+%\centering
+%\includegraphics[width=2.5in]{myfigure}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure}
+
+% Note that the IEEE typically puts floats only at the top, even when this
+% results in a large percentage of a column being occupied by floats.
+
+
+% An example of a double column floating figure using two subfigures.
+% (The subfig.sty package must be loaded for this to work.)
+% The subfigure \label commands are set within each subfloat command,
+% and the \label for the overall figure must come after \caption.
+% \hfil is used as a separator to get equal spacing.
+% Watch out that the combined width of all the subfigures on a 
+% line do not exceed the text width or a line break will occur.
+%
+%\begin{figure*}[!t]
+%\centering
+%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
+%\label{fig_first_case}}
+%\hfil
+%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
+%\label{fig_second_case}}
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure*}
+%
+% Note that often IEEE papers with subfigures do not employ subfigure
+% captions (using the optional argument to \subfloat[]), but instead will
+% reference/describe all of them (a), (b), etc., within the main caption.
+% Be aware that for subfig.sty to generate the (a), (b), etc., subfigure
+% labels, the optional argument to \subfloat must be present. If a
+% subcaption is not desired, just leave its contents blank,
+% e.g., \subfloat[].
+
+
+% An example of a floating table. Note that, for IEEE style tables, the
+% \caption command should come BEFORE the table and, given that table
+% captions serve much like titles, are usually capitalized except for words
+% such as a, an, and, as, at, but, by, for, in, nor, of, on, or, the, to
+% and up, which are usually not capitalized unless they are the first or
+% last word of the caption. Table text will default to \footnotesize as
+% the IEEE normally uses this smaller font for tables.
+% The \label must come after \caption as always.
+%
+%\begin{table}[!t]
+%% increase table row spacing, adjust to taste
+%\renewcommand{\arraystretch}{1.3}
+% if using array.sty, it might be a good idea to tweak the value of
+% \extrarowheight as needed to properly center the text within the cells
+%\caption{An Example of a Table}
+%\label{table_example}
+%\centering
+%% Some packages, such as MDW tools, offer better commands for making tables
+%% than the plain LaTeX2e tabular which is used here.
+%\begin{tabular}{|c||c|}
+%\hline
+%One & Two\\
+%\hline
+%Three & Four\\
+%\hline
+%\end{tabular}
+%\end{table}
+
+
+% Note that the IEEE does not put floats in the very first column
+% - or typically anywhere on the first page for that matter. Also,
+% in-text middle ("here") positioning is typically not used, but it
+% is allowed and encouraged for Computer Society conferences (but
+% not Computer Society journals). Most IEEE journals/conferences use
+% top floats exclusively. 
+% Note that, LaTeX2e, unlike IEEE journals/conferences, places
+% footnotes above bottom floats. This can be corrected via the
+% \fnbelowfloat command of the stfloats package.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\columnwidth]{TWDM-PON.pdf}\\
+	\caption{TWDM-PON architecture.}
+	\label{architecture}
+	\vspace{-6.0mm}
+\end{figure}
+\vspace{-3.0mm}
+
+\section{System Model}
+The TWDM-PON architecture is shown in Fig. \ref{architecture}. For simplicity, only downstream wavelengths are depicted in the diagram. Tunable transmitters and receivers are equipped in Optical Network Units (ONUs) and Optical Line Terminal (OLT). As presented in Fig. \ref{architecture}, ONU \#1 and \#2 are assigned with wavelength $\lambda_{1}$. It is the same case with ONU \#3 and \#4. A wavelength tends to contain more ONUs for energy saving purpose when traffic load declines.
+
+\textbf{Traffic migration}: Constrained by the limited bandwidth of a single wavelength, some ONUs need to be moved to a new wavelength. Average ONU migration delay is around 1000 ms \cite{Li:14}, and all service provided by the migrated ONUs will be interrupted during migration procedures. To maintain continuous service, ONU migration should not occur too frequently. Generally, the time interval of operation is typically hour-level in traditional energy-saving algorithms. Therefore, ONU migration should be operated wisely to make the best use of bandwidth, while avoiding migration interruptions.
+
+\textbf{Device lifetime}: The logarithm of lifetime is inversely proportional to the device working temperature. The impact caused by temperature cycling is modeled by Coffin-Manson Equation \cite{manson1954behavior}. According to the model presented in \cite{7105670}, the overall failure rate of the device can be expressed as \\
+\begin{footnotesize}
+\begin{equation}
+\gamma = \frac{T_{on}}{T_{total}}\gamma_{on} + \frac{T_{off}}{T_{total}}\gamma_{off} + \frac{f_{trans}}{N_{f}T_{total}}
+\end{equation}
+\end{footnotesize}
+Note that, failure rate, denoted as $ \gamma $ here, represents the frequency of failure events per hour and the device lifetime can be calculated by $1 /\gamma$. $T_{on}$ and $T_{off}$ are the amount of time the device stays in active state and sleep state, respectively. $\gamma_{on}$ is the failure rate when the device in active state, and $\gamma_{off}$ is the failure rate in sleep state. $f_{trans}$ is the number of power state transitions, and $N_{f}$ is the number of temperature cycles achieved by the device before a failure occurs. We assume that failure events are statistically independent.
+\vspace{-3.0mm}
+
+\section{Wavelength-Postponed-Switching-off (WPS) Strategy}
+
+\begin{figure}[t]
+    \centering 
+        \includegraphics[width=0.6\columnwidth]{WPS.pdf}\\ 
+    \caption{ An example of WPS.}
+    \label{WPS}
+    \vspace{-6.0mm}
+\end{figure}
+
+\subsection{What is the Number of Working Wavelengths}
+Conventional energy-efficient approaches, like Maximum-Energy-Saving (MES) strategy, aimed at minimizing the number of working wavelengths\footnote{We use the number of active wavelengths in each period to capture the energy consumption. A one-order linear model can be applied to get more accurate energy consumption.}. This is called bin-packing problem and can not get an optimal solution in polynomial time. Here, we further use a heuristic algorithm, First Fit Decreasing (FFD) \cite{baker1985new}, to solve it. FFD is described below: sort ONUs in descending order of traffic load in each period, and then associate them with the first wavelength with sufficient remaining bandwidth. We can estimate the minimum number of required working wavelengths each period by FFD.
+
+Due to these side effects caused by MES (including FFD), we propose the WPS, which is described in Algorithm 1 in detail. \emph{The main idea of WPS is to postpone the power-off some redundant wavelengths for several periods even when the traffic load declines}. Compared to MES which employs as few working wavelengths as possible, WPS reserves some wavelength resource for future possible rapid traffic fluctuations. A simple example is depicted in Fig. \ref{WPS}. The maximum number of postponed wavelengths is 3, and postponed time is 5 periods. The number of working wavelengths in each period is annotated in MES and WPS mode, respectively. In this cycle, the number of power state transitions by MES is 16 while only 6 by WPS. 
+
+\renewcommand{\algorithmicrequire}{ \textbf{Initialize:}}
+\begin{algorithm}[h]
+    \algsetup{linenosize=\tiny}
+    \scriptsize
+    \caption{: WPS Strategy}
+    \begin{algorithmic}[1]
+        \REQUIRE ~~\\
+        $ e $ $ \leftarrow $ the total number of periods;\\
+        $ m $ $ \leftarrow $ the maximum number of postponed working wavelengths;\\
+        $ p $ $ \leftarrow $ postponed periods; \\
+        $ m_{0} \leftarrow$ required wavelengths in period 0;\\
+        $ G \leftarrow \emptyset$, the set containing the number of working wavelengths in each period;\\
+        $ d $ $ \leftarrow 0 $; 
+        \WHILE {$ d  <  e $}
+            \FOR {$ i=1 \rightarrow p$}
+                \STATE calculate the required wavlengths $ m_{1} $ by FFD in period $ d + i $;\\
+                \IF {$ m_{0} > m_{1} $ }
+                    \STATE $ r \leftarrow min(m_{0} - m_{1}, m) $; $/*$ \textit{postponed working wavelengths} $*/$
+                \ELSE
+                    \STATE $ r \leftarrow 0 $;
+                \ENDIF
+                \STATE $ m_{1} \leftarrow m_{1} + r$; $/*$ \textit{the actual use of wavelengths in period} $d+i$ $*/$
+                \STATE $ m_{0} \leftarrow m_{1}$;  $/*$ \textit{update $ m_{0} $ for next period} $*/$ 
+                \STATE $G.add(m_{1})$;
+        \ENDFOR
+        \STATE {$d \leftarrow d + p$}; $/*$ \textit{next cycle} $*/$
+        \ENDWHILE
+        \STATE return $G$;
+    \end{algorithmic}
+\end{algorithm}
+\vspace{-5.0mm}
+Here, we analyze the complexity of Algorithm 1, which is mainly formed by two loops. The inner loop is designed for calculating the required wavelengths for $p$ postponed periods while the outer one traverses the whole $e$ periods. So the time complexity of Algorithm 1 is $O(ep)$.
+\vspace{-3.0mm}
+
+\subsection{How to Migrate the Traffic}
+When the number of working wavelengths in each period is given by MES or WPS mode, how to migrate the ONUs to minimize the traffic migration becomes another problem. The ONU migration model is described below.\\
+\textbf{Given}:
+\begin{itemize}
+	\item[-] $ C $: capacity of a single wavelength.
+	\item[-]$ A $: the number of working wavelengths in current period.
+	\item[-]$ N, W $: the total number of ONUs and wavelengths, respectively.
+	\item[-]$ b_{i} $: required bandwidth of ONU $ i $ in current period.
+	\item[-]$ x_{ij} $: predefined matrix element, which is one if ONU $ i $ associates with wavelength $ j $ in previous period, else zero.
+	\item[-]$ z_{j} $: predefined matrix element, which is one if wavelength $ j $ is active in previous period, else zero.
+\end{itemize}
+\textbf{Variables}:
+\begin{itemize}
+	\item[-]$ x'_{ij} $: binary decision variable, which is one if ONU $ i $ belongs to wavelength $ j $ in current period.
+	\item[-]$ z'_{j} $: binary decision variable, which is one if wavelength $ j $ is active in current period.
+\end{itemize}
+\textbf{Optimize}:
+\begin{footnotesize}
+\begin{align*}
+Minimize \quad	&\sum_{i=1}^{N}(1-\sum_{j=1}^{W}x_{ij}x'_{ij})b_{i} \tag{$2$}\\
+Subject \ to \quad    & \sum_{i=1}^{N}x'_{ij}b_{i} \leq C \quad \forall \ j \in [1,W] \tag{$3$} \\
+    &1- \prod_{i=1}^{N}{(1 - x'_{ij})} = z'_{j} \quad \forall \ j \in [1,W] \tag{$4$} \\
+    & \sum_{j=1}^{W}z'_j \leq A \tag{$5$}
+\end{align*}
+\end{footnotesize}
+
+Equation (2) tries to find the optimal wavelength reconfiguration, aiming at minimizing the traffic migration when the number of available wavelengths is given. Constraint (3) ensures that traffic load in any wavelength should not exceed the capacity. Equation (4) indicates that a wavelength is working when any ONU is assigned with it. Constraint (5) limits the number of working wavelength.
+
+This problem can be transformed to multiple knapsack problem \cite{dawande2000approximation}, which is already proved to be NP-hard and not suitable for large networks. Therefore, we further develop a heuristic algorithm, named Wavelength Reassignment Algorithm (WRA) here, to obtain a sub-optimal answer. WRA is described in Algorithm 2. When traffic load increases, more wavelengths are activated and light-load ONUs are relocated preferentially. As traffic load declines, light-load wavelengths are powered off and the corresponding ONUs are reconfigured in descending order.
+
+\begin{algorithm}[h]
+    \algsetup{linenosize=\tiny}
+    \scriptsize
+	\caption{: Wavelength Reassignment Algorithm (WRA)}
+	\begin{algorithmic}[1]
+		\REQUIRE ~~\\
+		$ m_{0} $ $ \leftarrow $ the number of working wavelengths in previous period;\\
+		$ m_{1} $ $ \leftarrow $ the number of working wavelengths in current period;\\
+	    $ U \leftarrow \emptyset$, the set containing pre-migrate ONUs;\\
+	    $ V \leftarrow$ the set consisting of working wavelengths in previous period;\\
+        \STATE sort wavelengths in $ V $ in descending order of current load;
+        \IF {$ m_{0} < m_{1} $ }
+	        \STATE add $ m_{1} - m_{0} $ idle wavelengths to $ V $;\\
+        \ELSE
+	        \STATE remove $ m_{0} - m_{1} $ of the least-load wavelengths from $ V $ and add the corresponding ONUs to $ U $;
+	    \ENDIF
+        \FOR {each wavelength in $ V $}
+	        \IF {total traffic load exceeds the capacity}
+		        \STATE reset this wavelength and add ONUs in descending order of load as many as possible;\\
+		        \STATE put the residual ONUs to $ U $;\\
+		    \ENDIF
+		\ENDFOR
+		\STATE sort ONUs in $ U $ in descending order;\\
+		\FOR {each ONU in $ U $}
+			\STATE add ONU to the max-load wavelength with sufficient remaining bandwidth, remove this ONU from $ U $;\\
+		\ENDFOR
+		\WHILE {$ U \neq \emptyset $}
+			\STATE add the max-load ONU in $ U $ to the least-load wavelength, remove a least-load ONU to $ U $ which makes the load in this wavelength not exceed the capacity;\\
+			\STATE sort $U$ in descending order and turn to step 14;\\
+		\ENDWHILE
+		\STATE return $ V $;\\
+	\end{algorithmic}
+\end{algorithm}
+\vspace{-3.0mm}
+Here, we analyze the complexity of Algorithm 2. There are two sort of operations for $W$ wavelengths and $N$ ONUs, whose complexity is $O(WlogW + NlogN)$. In sentence 7, we traverse the whole wavelengths and add ONUs in descending order, and its complexity is $O(WNlogN)$. In sentence 14-20, the remained ONUs are added and its complexity is $O(2WN)$. Note that $N > W$, and the complexity of Algorithm 2 is $O(N^2logN)$.
+\vspace{-4.0mm}
+
+\section{Illustrative Numerical Evaluations}
+\subsection{Simulation Setup}
+In our system configurations, the TWDM-PON system consists of 64 ONUs and 32 wavelengths. The bandwidth of a wavelength is 10 Gbit/s and the maximum data rate in one ONU is no more than 5 Gbit/s. We investigate the lifetime of line cards in OLT side. In accordance with Cisco \cite{cisco}, the lifetime of a line card is approximately 116052 hours. In sleep state, device lifetime is 3-fold than in working state. The number of cycles $ N_{f} $ is set $ 10^{4}$ according to the experiments in \cite{toshiba}\cite{ghaffarian2000accelerated}. 
+
+To generate different fluctuant traffic loads conformed to the reality, three kinds of traffic load are generated in the following ways. First, a basic traffic matrix is set up for each ONU in one day, with high bandwidth requirement in the daytime while relatively low at night. Then, we insert different levels of randomness into the basic traffic matrix to generate different kinds of traffic fluctuations. We use the variance of total traffic load in the observed time to describe the network traffic fluctuations. It is worth pointing that the variance of total traffic here is equal to the sum of the variance of basic traffic and randomness, whose distributions are independent. The variance of basic traffic is $ \sigma_{0}^{2} $ and other three fluctuant traffic's variances are $ 1.06\sigma_{0}^{2} $,  $ 1.11\sigma_{0}^{2} $, and  $ 1.20\sigma_{0}^{2} $ compared to the basic traffic, respectively. The subgraph on the upper left in Fig. \ref{traffic} shows the basic traffic matrix and the residual subgraphs represent three different fluctuant traffic load. The observed time is 72000 hours (for simplicity, only 24 hours are presented in the figure).
+
+\begin{figure}[t]
+  \centering 
+  \includegraphics[width=0.9\columnwidth]{traffic.pdf}\\ 
+  \caption{ Different fluctuant traffic load.}
+  \label{traffic}
+  \vspace{-6.0mm}
+\end{figure}
+
+\begin{figure*}[h]
+	\setlength{\abovecaptionskip}{-1.0mm}
+    \centering 
+    \subfigure[] { \label{fig:a} 
+        \includegraphics[width=0.646\columnwidth]{energy.pdf} %0.646
+    } 
+    \subfigure[] { \label{fig:b} 
+        \includegraphics[width=0.646\columnwidth]{lifetime.pdf} 
+    } 
+    \subfigure[] { \label{fig:c} 
+        \includegraphics[width=0.646\columnwidth]{migration.pdf} 
+    } 
+    \caption{Comparison between energy consumption (a), device lifetime (b), and traffic migration (c) with a different number of postponed working wavelengths and postponed periods under traffic-III.} 
+    \label{numerical} 
+    \vspace{-5.0mm}
+\end{figure*}
+
+\begin{figure*}[h]
+  \setlength{\abovecaptionskip}{-1.0mm}
+    \centering 
+    \subfigure[] { 
+        \includegraphics[width=0.75\columnwidth]{lifetimede-energy.pdf} 
+    } 
+    \subfigure[] { 
+        \includegraphics[width=0.75\columnwidth]{migration-energy.pdf} 
+    } 
+    \caption{Trade-off between energy consumption and lifetime degeneration, traffic migration under different traffic fluctuations.} 
+    \label{numerical_2} 
+    \vspace{-6.0mm}
+\end{figure*}
+
+\vspace{-5.0mm}
+\subsection{Performance Analysis}
+Fig. \ref{numerical}(a-c) show energy consumption, device lifetime, and traffic migration when MES and WPS are applied to traffic-III. The $n$ in WPS (equals 1,2,3,4,5) represents the maximum number of postponed working wavelengths. We can find that energy consumption increases with the increment of the maximum number of postponed working wavelengths and postponed time. WPS consumes more energy than MES since extra working wavelengths are not powered off immediately. According to Fig. \ref{numerical}(b), a line card's lifetime reduces more than 50\% when energy efficiency is optimized. Owing to less frequent power state transitions, WPS$ -5 $ mitigates the lifetime degeneration by 17\% when postponed time is 7 hours, which means the device can work for more 18568 hours with our previous assumptions. In terms of traffic migration, MES triggers average 21\% traffic migration in each period while only 9\% occurs when WPS$ -5 $ is applied based on Fig. \ref{numerical}(c). Due to less frequent power state transitions, ONUs are moved to a new wavelength in a lower possibility compared to MES.
+
+Fig. \ref{numerical_2} demonstrate the system's performance when traffic fluctuates differently. Three kind of fluctuant traffic load are selected . In Fig. \ref{numerical_2}, default points show performance achieved by MES while minimum migration/lifetime degeneration points present the performance achieved by WPS$ -5 $ with 7 hours' delay. Device lifetime can be reduced by 45\%, 51\% and 56\% at default points compared to continuously working state while WPS alleviates the lifetime degeneration by 16\%, 15\%, and 17\% at minimum lifetime degeneration points, respectively. As for traffic migration, average 16\%, 18\%, and 21\% traffic migration occurs in each period while low to 6\%, 7\%, 9\% is achieved by WPS at minimum migration points. It can be noticed that when traffic fluctuates more rapidly, the device lifetime deteriorates more severely and more traffic migration occurs. It is because more fluctuant traffic load results in larger differences in the number of working wavelengths between two periods, thus leading to more power state transitions and traffic migration. WPS reduces these differences by postponing the power-off of extra working wavelengths, which alleviates the device lifetime degeneration as well as reduces traffic migration simultaneously.
+\vspace{-3.0mm}
+
+\section{Conclusion}
+Conventional energy efficiency schemes may deteriorate the device lifetime and cause huge traffic migration in the TWDM-PON-enabled access networks. The situation becomes more severe when rapidly-fluctuant traffic transpires. We propose a simple and effective scheme to balance these aspects. Numerical results demonstrate that our strategy can achieve longer lifetime and less traffic migration with reasonable energy compromise.
+\vspace{-5.0mm}
+
+% if have a single appendix:
+%\appendix[Proof of the Zonklar Equations]
+% or
+%\appendix  % for no appendix heading
+% do not use \section anymore after \appendix, only \section*
+% is possibly needed
+
+% use appendices with more than one appendix
+% then use \section to start each appendix
+% you must declare a \section before using any
+% \subsection or using \label (\appendices by itself
+% starts a section numbered zero.)
+%
+
+
+%\appendices
+%\section{Proof of the First Zonklar Equation}
+%Appendix one text goes here.
+
+% you can choose not to have a title for an appendix
+% if you want by leaving the argument blank
+%\section{}
+%Appendix two text goes here.
+
+
+% use section* for acknowledgment
+%\section*{Acknowledgment}
+
+
+%The authors would like to thank...
+
+
+% Can use something like this to put references on a page
+% by themselves when using endfloat and the captionsoff option.
+%\ifCLASSOPTIONcaptionsoff
+%  \newpage
+%\fi
+
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://mirror.ctan.org/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+%\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+%\begin{thebibliography}{1}
+
+%\bibitem{IEEEhowto:kopka}
+%H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
+%  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+
+%\end{thebibliography}
+
+% biography section
+% 
+% If you have an EPS/PDF photo (graphicx package needed) extra braces are
+% needed around the contents of the optional argument to biography to prevent
+% the LaTeX parser from getting confused when it sees the complicated
+% \includegraphics command within an optional argument. (You could create
+% your own custom macro containing the \includegraphics command to make things
+% simpler here.)
+%\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
+% or if you just want to reserve a space for a photo:
+
+%\begin{IEEEbiography}{Michael Shell}
+%Biography text here.
+%\end{IEEEbiography}
+
+% if you will not have a photo at all:
+%\begin{IEEEbiographynophoto}{John Doe}
+%Biography text here.
+%\end{IEEEbiographynophoto}
+
+% insert where needed to balance the two columns on the last page with
+% biographies
+%\newpage
+
+%\begin{IEEEbiographynophoto}{Jane Doe}
+%Biography text here.
+%\end{IEEEbiographynophoto}
+
+% You can push biographies down or up by placing
+% a \vfill before or after them. The appropriate
+% use of \vfill depends on what kind of text is
+% on the last page and whether or not the columns
+% are being equalized.
+
+%\vfill
+
+% Can be used to pull up biographies so that the bottom of the last one
+% is flush with the other column.
+%\enlargethispage{-5in}
+
+
+
+% that's all folks
+
+\bibliographystyle{IEEEtran}%
+\bibliography{paper}
+\end{document}
+
+
